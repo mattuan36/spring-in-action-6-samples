@@ -41,19 +41,19 @@ public class HomePageBrowserTest {
     
     String titleText = browser.getTitle();
     Assertions.assertThat(titleText)
-    		  .isEqualTo("Taco Cloud");
+    		  .isEqualTo("Apple Store");
     
     String h1Text = browser
     				.findElementByTagName("h1")
     				.getText();
     Assertions.assertThat(h1Text)
-    		  .isEqualTo("Welcome to...");
+    		  .isEqualTo("Welcome to the Apple Store!");
     
     String imgSrc = browser
     				.findElementByTagName("img")
                     .getAttribute("src");
     Assertions.assertThat(imgSrc)
-    		  .isEqualTo(homePage + "/images/TacoCloud.png");
+    		  .isEqualTo(homePage + "/images/AppleStore.png");
   }
   
   

@@ -29,16 +29,16 @@ public class DesignTacoController {
 @ModelAttribute
 public void addIngredientsToModel(Model model) {
 	List<Ingredient> ingredients = Arrays.asList(
-	  new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-	  new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-	  new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-	  new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-	  new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-	  new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-	  new Ingredient("CHED", "Cheddar", Type.CHEESE),
-	  new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-	  new Ingredient("SLSA", "Salsa", Type.SAUCE),
-	  new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
+	  new Ingredient("FUJI", "Fuji Apple", Type.PLAIN),
+	  new Ingredient("GALA", "Gala Apple", Type.PLAIN),
+	  new Ingredient("HCRP", "Honeycrisp Apple", Type.PLAIN),
+	  new Ingredient("RDLS", "Red Delicious Apple", Type.PLAIN),
+	  new Ingredient("HASH", "Apple Hash", Type.FOOD),
+	  new Ingredient("SAGE", "Chicken-Apple Sausage", Type.FOOD),
+	  new Ingredient("TART", "Apple Tart", Type.DESSERT),
+	  new Ingredient("APIE", "Apple Pie", Type.DESSERT),
+	  new Ingredient("JUCE", "Apple Juice", Type.DRINK),
+	  new Ingredient("CIDR", "Apple Cider", Type.DRINK)
 	);
 
 	Type[] types = Ingredient.Type.values();
@@ -84,7 +84,7 @@ public void addIngredientsToModel(Model model) {
     }
 
     tacoOrder.addTaco(taco);
-    log.info("Processing taco: {}", taco);
+    log.info("Processing order: {}", taco);
 
     return "redirect:/orders/current";
   }

@@ -15,26 +15,16 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
   private Map<String, Ingredient> ingredientMap = new HashMap<>();
   
   public IngredientByIdConverter() {
-    ingredientMap.put("FLTO", 
-        new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
-    ingredientMap.put("COTO", 
-        new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
-    ingredientMap.put("GRBF", 
-        new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
-    ingredientMap.put("CARN", 
-        new Ingredient("CARN", "Carnitas", Type.PROTEIN));
-    ingredientMap.put("TMTO", 
-        new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES));
-    ingredientMap.put("LETC", 
-        new Ingredient("LETC", "Lettuce", Type.VEGGIES));
-    ingredientMap.put("CHED", 
-        new Ingredient("CHED", "Cheddar", Type.CHEESE));
-    ingredientMap.put("JACK", 
-        new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
-    ingredientMap.put("SLSA", 
-        new Ingredient("SLSA", "Salsa", Type.SAUCE));
-    ingredientMap.put("SRCR", 
-        new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
+    ingredientMap.put("FUJI", new Ingredient("FUJI", "Fuji Apple", Type.PLAIN));
+    ingredientMap.put("GALA", new Ingredient("GALA", "Gala Apple", Type.PLAIN));
+    ingredientMap.put("HCRP", new Ingredient("HCRP", "Honeycrisp Apple", Type.PLAIN));
+    ingredientMap.put("RDLS", new Ingredient("RDLS", "Red Delicious Apple", Type.PLAIN));
+    ingredientMap.put("HASH", new Ingredient("HASH", "Apple Hash", Type.FOOD));
+    ingredientMap.put("SAGE", new Ingredient("SAGE", "Chicken-Apple Sausage", Type.FOOD));
+    ingredientMap.put("TART", new Ingredient("TART", "Apple Tart", Type.DESSERT));
+    ingredientMap.put("APIE", new Ingredient("APIE", "Apple Pie", Type.DESSERT));
+    ingredientMap.put("JUCE", new Ingredient("JUCE", "Apple Juice", Type.DRINK));
+    ingredientMap.put("CIDR", new Ingredient("CIDR", "Apple Cider", Type.DRINK));
   }
   
   @Override
