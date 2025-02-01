@@ -20,16 +20,16 @@ public class TacoCloudApplication {
     return new CommandLineRunner() {
       @Override
       public void run(String... args) throws Exception {
-        repo.save(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
-        repo.save(new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
-        repo.save(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
-        repo.save(new Ingredient("CARN", "Carnitas", Type.PROTEIN));
-        repo.save(new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES));
-        repo.save(new Ingredient("LETC", "Lettuce", Type.VEGGIES));
-        repo.save(new Ingredient("CHED", "Cheddar", Type.CHEESE));
-        repo.save(new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
-        repo.save(new Ingredient("SLSA", "Salsa", Type.SAUCE));
-        repo.save(new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
+        repo.save(new Ingredient("FUJI", "Fuji Apple", Type.PLAIN));
+        repo.save(new Ingredient("GALA", "Gala Apple", Type.PLAIN));
+        repo.save(new Ingredient("HCRP", "Honeycrisp Apple", Type.PLAIN));
+        repo.save(new Ingredient("RDLS", "Red Delicious Apple", Type.PLAIN));
+        repo.save(new Ingredient("HASH", "Apple Hash", Type.FOOD));
+        repo.save(new Ingredient("SAGE", "Chicken-Apple Sausage", Type.FOOD));
+        repo.save(new Ingredient("TART", "Apple Tart", Type.DESSERT));
+        repo.save(new Ingredient("APIE", "Apple Pie", Type.DESSERT));
+        repo.save(new Ingredient("JUCE", "Apple Juice", Type.DRINK));
+        repo.save(new Ingredient("CIDR", "Apple Cider", Type.DRINK));
       }
     };
   }
