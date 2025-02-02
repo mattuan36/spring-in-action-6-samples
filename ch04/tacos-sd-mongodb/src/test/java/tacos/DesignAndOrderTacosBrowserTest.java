@@ -49,9 +49,9 @@ public class DesignAndOrderTacosBrowserTest {
     browser.get(homePageUrl());
     clickDesignATaco();
     assertDesignPageElements();
-    buildAndSubmitATaco("Basic Taco", "FLTO", "GRBF", "CHED", "TMTO", "SLSA");
+    buildAndSubmitATaco("Basic Apples", "FUJI", "GALA", "HCRP", "RDLS");
     clickBuildAnotherTaco();
-    buildAndSubmitATaco("Another Taco", "COTO", "CARN", "JACK", "LETC", "SRCR");
+    buildAndSubmitATaco("Another Apples", "GALA", "HASH", "SAGE", "TART", "JUCE");
     fillInAndSubmitOrderForm();
     assertThat(browser.getCurrentUrl()).isEqualTo(homePageUrl());
   }
@@ -61,7 +61,7 @@ public class DesignAndOrderTacosBrowserTest {
     browser.get(homePageUrl());
     clickDesignATaco();
     assertDesignPageElements();
-    buildAndSubmitATaco("Basic Taco", "FLTO", "GRBF", "CHED", "TMTO", "SLSA");
+    buildAndSubmitATaco("Basic Apples", "FUJI", "GALA", "HCRP", "RDLS");
     submitEmptyOrderForm();
     fillInAndSubmitOrderForm();
     assertThat(browser.getCurrentUrl()).isEqualTo(homePageUrl());
@@ -72,7 +72,7 @@ public class DesignAndOrderTacosBrowserTest {
     browser.get(homePageUrl());
     clickDesignATaco();
     assertDesignPageElements();
-    buildAndSubmitATaco("Basic Taco", "FLTO", "GRBF", "CHED", "TMTO", "SLSA");
+    buildAndSubmitATaco("Basic Apples", "FUJI", "GALA", "HCRP", "RDLS");
     submitInvalidOrderForm();
     fillInAndSubmitOrderForm();
     assertThat(browser.getCurrentUrl()).isEqualTo(homePageUrl());
@@ -94,37 +94,33 @@ public class DesignAndOrderTacosBrowserTest {
   private void assertDesignPageElements() {
     assertThat(browser.getCurrentUrl()).isEqualTo(designPageUrl());
     List<WebElement> ingredientGroups = browser.findElementsByClassName("ingredient-group");
-    assertThat(ingredientGroups).hasSize(5);
+    assertThat(ingredientGroups).hasSize(4);
 
-    WebElement wrapGroup = browser.findElementByCssSelector("div.ingredient-group#wraps");
+    WebElement wrapGroup = browser.findElementByCssSelector("div.ingredient-group#plain");
     List<WebElement> wraps = wrapGroup.findElements(By.tagName("div"));
-    assertThat(wraps).hasSize(2);
-    assertIngredient(wrapGroup, 0, "FLTO", "Flour Tortilla");
-    assertIngredient(wrapGroup, 1, "COTO", "Corn Tortilla");
+    assertThat(wraps.size()).isEqualTo(4);
+    assertIngredient(wrapGroup, 0, "FUJI", "Fuji Apple");
+    assertIngredient(wrapGroup, 1, "GALA", "Gala Apple");
+    assertIngredient(wrapGroup, 2, "HCRP", "Honeycrisp Apple");
+    assertIngredient(wrapGroup, 3, "RDLS", "Red Delicious Apple");
 
-    WebElement proteinGroup = browser.findElementByCssSelector("div.ingredient-group#proteins");
+    WebElement proteinGroup = browser.findElementByCssSelector("div.ingredient-group#food");
     List<WebElement> proteins = proteinGroup.findElements(By.tagName("div"));
-    assertThat(proteins).hasSize(2);
-    assertIngredient(proteinGroup, 0, "GRBF", "Ground Beef");
-    assertIngredient(proteinGroup, 1, "CARN", "Carnitas");
+    assertThat(proteins.size()).isEqualTo(2);
+    assertIngredient(proteinGroup, 0, "HASH", "Apple Hash");
+    assertIngredient(proteinGroup, 1, "SAGE", "Chicken-Apple Sausage");
 
-    WebElement cheeseGroup = browser.findElementByCssSelector("div.ingredient-group#cheeses");
+    WebElement cheeseGroup = browser.findElementByCssSelector("div.ingredient-group#drink");
     List<WebElement> cheeses = proteinGroup.findElements(By.tagName("div"));
-    assertThat(cheeses).hasSize(2);
-    assertIngredient(cheeseGroup, 0, "CHED", "Cheddar");
-    assertIngredient(cheeseGroup, 1, "JACK", "Monterrey Jack");
+    assertThat(cheeses.size()).isEqualTo(2);
+    assertIngredient(cheeseGroup, 0, "JUCE", "Apple Juice");
+    assertIngredient(cheeseGroup, 1, "CIDR", "Apple Cider");
 
-    WebElement veggieGroup = browser.findElementByCssSelector("div.ingredient-group#veggies");
+    WebElement veggieGroup = browser.findElementByCssSelector("div.ingredient-group#dessert");
     List<WebElement> veggies = proteinGroup.findElements(By.tagName("div"));
-    assertThat(veggies).hasSize(2);
-    assertIngredient(veggieGroup, 0, "TMTO", "Diced Tomatoes");
-    assertIngredient(veggieGroup, 1, "LETC", "Lettuce");
-
-    WebElement sauceGroup = browser.findElementByCssSelector("div.ingredient-group#sauces");
-    List<WebElement> sauces = proteinGroup.findElements(By.tagName("div"));
-    assertThat(sauces).hasSize(2);
-    assertIngredient(sauceGroup, 0, "SLSA", "Salsa");
-    assertIngredient(sauceGroup, 1, "SRCR", "Sour Cream");
+    assertThat(veggies.size()).isEqualTo(2);
+    assertIngredient(veggieGroup, 0, "TART", "Apple Tart");
+    assertIngredient(veggieGroup, 1, "APIE", "Apple Pie");
   }
 
 

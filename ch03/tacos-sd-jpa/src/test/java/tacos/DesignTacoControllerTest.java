@@ -80,10 +80,10 @@ public class DesignTacoControllerTest {
     mockMvc.perform(get("/design"))
         .andExpect(status().isOk())
         .andExpect(view().name("design"))
-        .andExpect(model().attribute("plain", ingredients.subList(0, 3)))
-        .andExpect(model().attribute("food", ingredients.subList(3, 5)))
-        .andExpect(model().attribute("drink", ingredients.subList(5, 7)))
-        .andExpect(model().attribute("dessert", ingredients.subList(7, 9)));
+        .andExpect(model().attribute("plain", ingredients.subList(0, 4)))
+        .andExpect(model().attribute("food", ingredients.subList(4, 6)))
+        .andExpect(model().attribute("dessert", ingredients.subList(6, 8)))
+        .andExpect(model().attribute("drink", ingredients.subList(8, 10)));
   }
 
   @Test

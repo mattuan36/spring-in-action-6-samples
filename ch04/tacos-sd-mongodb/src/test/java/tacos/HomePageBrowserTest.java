@@ -40,15 +40,15 @@ public class HomePageBrowserTest {
     browser.get(homePage);
     
     String titleText = browser.getTitle();
-    Assertions.assertThat(titleText).isEqualTo("Taco Cloud");
+    Assertions.assertThat(titleText).isEqualTo("Apple Store");
     
     String h1Text = browser.findElementByTagName("h1").getText();
-    Assertions.assertThat(h1Text).isEqualTo("Welcome to...");
+    Assertions.assertThat(h1Text).isEqualTo("Welcome to the Apple Store!");
 
     
     String imgSrc = browser.findElementByTagName("img")
                                               .getAttribute("src");
-    Assertions.assertThat(imgSrc).isEqualTo(homePage + "/images/TacoCloud.png");
+    Assertions.assertThat(imgSrc).isEqualTo(homePage + "/images/AppleStore.png");
   }
   
   

@@ -31,16 +31,16 @@ public class OrderRepositoryTests {
     order.setCcExpiration("10/23");
     order.setCcCVV("123");
     Taco taco1 = new Taco();
-    taco1.setName("Taco One");
-    taco1.addIngredient(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
-    taco1.addIngredient(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
-    taco1.addIngredient(new Ingredient("CHED", "Shredded Cheddar", Type.CHEESE));
+    taco1.setName("Apple One");
+    taco1.addIngredient(new Ingredient("GALA", "Gala Apple", Type.PLAIN));
+    taco1.addIngredient(new Ingredient("HASH", "Apple Hash", Type.FOOD));
+    taco1.addIngredient(new Ingredient("JUCE", "Apple Juice", Type.DRINK));
     order.addTaco(taco1);
     Taco taco2 = new Taco();
-    taco2.setName("Taco Two");
-    taco2.addIngredient(new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
-    taco2.addIngredient(new Ingredient("CARN", "Carnitas", Type.PROTEIN));
-    taco2.addIngredient(new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
+    taco2.setName("Apple Two");
+    taco2.addIngredient(new Ingredient("RDLS", "Red Delicious Apple", Type.PLAIN));
+    taco2.addIngredient(new Ingredient("APIE", "Apple Pie", Type.DESSERT));
+    taco2.addIngredient(new Ingredient("CIDR", "Apple Cider", Type.DRINK));
     order.addTaco(taco2);
     
     TacoOrder savedOrder = orderRepo.save(order);
