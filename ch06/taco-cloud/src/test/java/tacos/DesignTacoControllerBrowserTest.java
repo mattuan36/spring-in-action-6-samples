@@ -35,6 +35,7 @@ public class DesignTacoControllerBrowserTest {
   
   @BeforeAll
   public static void openBrowser() {
+    //System.setProperty("webdriver.chrome.driver","D:\\List_of_Jar\\chromedriver.exe");
     browser = new ChromeDriver();
     browser.manage().timeouts()
         .implicitlyWait(10, TimeUnit.SECONDS);
@@ -51,19 +52,21 @@ public class DesignTacoControllerBrowserTest {
     browser.get("http://localhost:" + port + "/design");
 
     List<WebElement> ingredientGroups = browser.findElementsByClassName("ingredient-group");
-    assertThat(ingredientGroups).hasSize(5);
+    assertThat(ingredientGroups).hasSize(4);
     
     WebElement wrapGroup = ingredientGroups.get(0);
     List<WebElement> wraps = wrapGroup.findElements(By.tagName("div"));
-    assertThat(wraps).hasSize(2);
-    assertIngredient(wrapGroup, 0, "FLTO", "Flour Tortilla");
-    assertIngredient(wrapGroup, 1, "COTO", "Corn Tortilla");
+    assertThat(wraps).hasSize(4);
+    assertIngredient(wrapGroup, 0, "FUJI", "Fuji Apple");
+    assertIngredient(wrapGroup, 1, "GALA", "Gala Apple");
+    assertIngredient(wrapGroup, 2, "HCRP", "Honeycrisp Apple");
+    assertIngredient(wrapGroup, 3, "RDLS", "Red Delicious Apple");
     
     WebElement proteinGroup = ingredientGroups.get(1);
     List<WebElement> proteins = proteinGroup.findElements(By.tagName("div"));
     assertThat(proteins).hasSize(2);
-    assertIngredient(proteinGroup, 0, "GRBF", "Ground Beef");
-    assertIngredient(proteinGroup, 1, "CARN", "Carnitas");
+    assertIngredient(proteinGroup, 0, "HASH", "Apple Hash");
+    assertIngredient(proteinGroup, 1, "SAGE", "Chicken-Apple Sausage");
   }
   
   private void assertIngredient(WebElement ingredientGroup, 

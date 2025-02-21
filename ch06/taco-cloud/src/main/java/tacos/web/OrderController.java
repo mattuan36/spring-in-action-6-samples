@@ -1,6 +1,9 @@
 package tacos.web;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import tacos.TacoOrder;
 import tacos.User;
@@ -22,6 +27,9 @@ import tacos.data.OrderRepository;
 @RequestMapping("/orders")
 @SessionAttributes("order")
 public class OrderController {
+
+  @Autowired
+  private Environment environment;
 
   private OrderRepository orderRepo;
 
@@ -66,8 +74,12 @@ public class OrderController {
 
     order.setUser(user);
 
-    orderRepo.save(order);
-    sessionStatus.setComplete();
+    if (environment.acceptsProfiles((Profiles.of("testpro")))){
+      orderRepo.save(order);
+      sessionStatus.setComplete();
+    } else {
+      System.out.println(order);
+    }
 
     return "redirect:/";
   }

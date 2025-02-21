@@ -2,12 +2,14 @@ package tacos.web;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -36,6 +38,9 @@ public class DesignTacoController {
   private TacoRepository tacoRepo;
 
   private UserRepository userRepo;
+
+  @Value("${spring.profiles.active:}")
+  private String activeProfile;
 
   @Autowired
   public DesignTacoController(
@@ -91,8 +96,12 @@ public class DesignTacoController {
       return "design";
     }
 
-    Taco saved = tacoRepo.save(taco);
-    order.addTaco(saved);
+    if (getActiveProfiles().contains("dev")) {
+      System.out.println(taco.toString());
+    } else {
+      Taco saved = tacoRepo.save(taco);
+      order.addTaco(saved);
+    }
 
     return "redirect:/orders/current";
   }
@@ -103,6 +112,10 @@ public class DesignTacoController {
               .stream()
               .filter(x -> x.getType().equals(type))
               .collect(Collectors.toList());
+  }
+
+  private List<String> getActiveProfiles() {
+      return new ArrayList<>(Arrays.asList(activeProfile.split(",")));
   }
 
 }

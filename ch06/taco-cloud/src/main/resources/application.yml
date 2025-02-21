@@ -19,13 +19,39 @@ taco:
 
 ---
 spring:
-  profiles: prod
-
+  config:
+    activate:
+      on-profile: testpro
   datasource:
     url: jdbc:mysql://localhost/tacocloud
-    username: tacouser
-    password: tacopassword
+    username: testuser
+    password: testpw
 
 logging:
   level:
     tacos: WARN
+  file:
+    name: my.log
+
+taco:
+  orders:
+    pageSize: 5
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost/tacocloud
+    username: devuser
+    password: devpw
+
+logging:
+  level:
+    tacos: DEBUG
+
+taco:
+  orders:
+    pageSize: 10
