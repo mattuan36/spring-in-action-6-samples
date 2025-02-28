@@ -18,7 +18,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@RestResource(rel="tacos", path="tacos")
+@RestResource(rel="tacos", path="apples")
 public class Taco {
 
   @Id

@@ -35,7 +35,7 @@ public class RestExamples {
     return args -> {
       log.info("----------------------- GET -------------------------");
       log.info("GETTING INGREDIENT BY IDE");
-      log.info("Ingredient:  " + tacoCloudClient.getIngredientById("CHED"));
+      log.info("Ingredient:  " + tacoCloudClient.getIngredientById("FUJI"));
       log.info("GETTING ALL INGREDIENTS");
       List<Ingredient> ingredients = tacoCloudClient.getAllIngredients();
       log.info("All ingredients:");
@@ -49,10 +49,10 @@ public class RestExamples {
   public CommandLineRunner putAnIngredient(TacoCloudClient tacoCloudClient) {
     return args -> {
       log.info("----------------------- PUT -------------------------");
-      Ingredient before = tacoCloudClient.getIngredientById("LETC");
+      Ingredient before = tacoCloudClient.getIngredientById("GALA");
       log.info("BEFORE:  " + before);
-      tacoCloudClient.updateIngredient(new Ingredient("LETC", "Shredded Lettuce", Ingredient.Type.VEGGIES));
-      Ingredient after = tacoCloudClient.getIngredientById("LETC");
+      tacoCloudClient.updateIngredient(new Ingredient("GALA", "Gala Apple", Ingredient.Type.PLAIN));
+      Ingredient after = tacoCloudClient.getIngredientById("GALA");
       log.info("AFTER:  " + after);
     };
   }
@@ -61,9 +61,9 @@ public class RestExamples {
   public CommandLineRunner addAnIngredient(TacoCloudClient tacoCloudClient) {
     return args -> {
       log.info("----------------------- POST -------------------------");
-      Ingredient chix = new Ingredient("CHIX", "Shredded Chicken", Ingredient.Type.PROTEIN);
-      Ingredient chixAfter = tacoCloudClient.createIngredient(chix);
-      log.info("AFTER=1:  " + chixAfter);
+      Ingredient sliced = new Ingredient("SlIC", "Sliced Apples", Ingredient.Type.FOOD);
+      Ingredient slicedAfter = tacoCloudClient.createIngredient(sliced);
+      log.info("AFTER=1:  " + slicedAfter);
 //      Ingredient beefFajita = new Ingredient("BFFJ", "Beef Fajita", Ingredient.Type.PROTEIN);
 //      URI uri = tacoCloudClient.createIngredient(beefFajita);
 //      log.info("AFTER-2:  " + uri);
@@ -79,16 +79,16 @@ public class RestExamples {
     return args -> {
       log.info("----------------------- DELETE -------------------------");
       // start by adding a few ingredients so that we can delete them later...
-      Ingredient beefFajita = new Ingredient("BFFJ", "Beef Fajita", Ingredient.Type.PROTEIN);
+      Ingredient beefFajita = new Ingredient("BFFJ", "Beef Fajita", Ingredient.Type.FOOD);
       tacoCloudClient.createIngredient(beefFajita);
-      Ingredient shrimp = new Ingredient("SHMP", "Shrimp", Ingredient.Type.PROTEIN);
+      Ingredient shrimp = new Ingredient("SHMP", "Shrimp", Ingredient.Type.FOOD);
       tacoCloudClient.createIngredient(shrimp);
 
 
-      Ingredient before = tacoCloudClient.getIngredientById("CHIX");
+      Ingredient before = tacoCloudClient.getIngredientById("SlIC");
       log.info("BEFORE:  " + before);
       tacoCloudClient.deleteIngredient(before);
-      Ingredient after = tacoCloudClient.getIngredientById("CHIX");
+      Ingredient after = tacoCloudClient.getIngredientById("SlIC");
       log.info("AFTER:  " + after);
       before = tacoCloudClient.getIngredientById("BFFJ");
       log.info("BEFORE:  " + before);
@@ -129,7 +129,7 @@ public class RestExamples {
   public CommandLineRunner traversonSaveIngredient(TacoCloudClient tacoCloudClient) {
     return args -> {
       Ingredient pico = tacoCloudClient.addIngredient(
-          new Ingredient("PICO", "Pico de Gallo", Ingredient.Type.SAUCE));
+          new Ingredient("PICO", "Pico de Gallo", Ingredient.Type.DESSERT));
       List<Ingredient> allIngredients = tacoCloudClient.getAllIngredients();
       log.info("----------------------- ALL INGREDIENTS AFTER SAVING PICO -------------------------");
       for (Ingredient ingredient : allIngredients) {

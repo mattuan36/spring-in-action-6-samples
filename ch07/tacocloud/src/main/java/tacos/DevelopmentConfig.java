@@ -24,61 +24,73 @@ public class DevelopmentConfig {
       PasswordEncoder encoder,
       TacoRepository tacoRepo) {
     return args -> {
-      Ingredient flourTortilla = new Ingredient(
-          "FLTO", "Flour Tortilla", Type.WRAP);
-      Ingredient cornTortilla = new Ingredient(
-          "COTO", "Corn Tortilla", Type.WRAP);
-      Ingredient groundBeef = new Ingredient(
-          "GRBF", "Ground Beef", Type.PROTEIN);
-      Ingredient carnitas = new Ingredient(
-          "CARN", "Carnitas", Type.PROTEIN);
-      Ingredient tomatoes = new Ingredient(
-          "TMTO", "Diced Tomatoes", Type.VEGGIES);
-      Ingredient lettuce = new Ingredient(
-          "LETC", "Lettuce", Type.VEGGIES);
-      Ingredient cheddar = new Ingredient(
-          "CHED", "Cheddar", Type.CHEESE);
-      Ingredient jack = new Ingredient(
-          "JACK", "Monterrey Jack", Type.CHEESE);
-      Ingredient salsa = new Ingredient(
-          "SLSA", "Salsa", Type.SAUCE);
-      Ingredient sourCream = new Ingredient(
-          "SRCR", "Sour Cream", Type.SAUCE);
-      repo.save(flourTortilla);
-      repo.save(cornTortilla);
-      repo.save(groundBeef);
-      repo.save(carnitas);
-      repo.save(tomatoes);
-      repo.save(lettuce);
-      repo.save(cheddar);
-      repo.save(jack);
-      repo.save(salsa);
-      repo.save(sourCream);
+      Ingredient fuji = new Ingredient(
+          "FUJI", "Fuji Apple", Type.PLAIN);
+      Ingredient gala = new Ingredient(
+          "GALA", "Gala Apple", Type.PLAIN);
+      Ingredient honeycrisp = new Ingredient(
+          "HCRP", "Honeycrisp Apple", Type.PLAIN);
+      Ingredient redDelicious = new Ingredient(
+          "RDLS", "Red Delicious Apple", Type.PLAIN);
+      Ingredient hash = new Ingredient(
+          "HASH", "Apple Hash", Type.FOOD);
+      Ingredient sausage = new Ingredient(
+          "SAGE", "Chicken-Apple Sausage", Type.FOOD);
+      Ingredient tart = new Ingredient(
+          "TART", "Apple Tart", Type.DESSERT);
+      Ingredient pie = new Ingredient(
+          "APIE", "Apple Pie", Type.DESSERT);
+      Ingredient juice = new Ingredient(
+          "JUCE", "Apple Juice", Type.DRINK);
+      Ingredient cider = new Ingredient(
+          "CIDR", "Apple Cider", Type.DRINK);
+      repo.save(fuji);
+      repo.save(gala);
+      repo.save(honeycrisp);
+      repo.save(redDelicious);
+      repo.save(hash);
+      repo.save(sausage);
+      repo.save(tart);
+      repo.save(pie);
+      repo.save(juice);
+      repo.save(cider);
 
-      userRepo.save(new User("habuma", encoder.encode("password"),
-          "Craig Walls", "123 North Street", "Cross Roads", "TX",
+      userRepo.save(new User("matt", encoder.encode("password"),
+          "Test User", "123 North Street", "Cross Roads", "TX",
           "76227", "123-123-1234"));
 
       Taco taco1 = new Taco();
-      taco1.setName("Carnivore");
+      taco1.setName("Applelover");
       taco1.setIngredients(Arrays.asList(
-              flourTortilla, groundBeef, carnitas,
-              sourCream, salsa, cheddar));
+              fuji, honeycrisp, tart,
+              pie, cider));
       tacoRepo.save(taco1);
 
       Taco taco2 = new Taco();
-      taco2.setName("Bovine Bounty");
+      taco2.setName("Fastfood");
       taco2.setIngredients(Arrays.asList(
-              cornTortilla, groundBeef, cheddar,
-              jack, sourCream));
+              sausage, hash, tart,
+              pie));
       tacoRepo.save(taco2);
 
       Taco taco3 = new Taco();
-      taco3.setName("Veg-Out");
+      taco3.setName("Sweets");
       taco3.setIngredients(Arrays.asList(
-              flourTortilla, cornTortilla, tomatoes,
-              lettuce, salsa));
+              tart, pie, juice,
+              cider));
       tacoRepo.save(taco3);
+
+      Taco taco4 = new Taco();
+      taco4.setName("Apple4");
+      taco4.setIngredients(Arrays.asList(
+              fuji, hash, sausage));
+      tacoRepo.save(taco4);
+
+      Taco taco5 = new Taco();
+      taco5.setName("Matt's Apples");
+      taco5.setIngredients(Arrays.asList(
+              tart, juice, hash));
+      tacoRepo.save(taco5);
     };
   }
   

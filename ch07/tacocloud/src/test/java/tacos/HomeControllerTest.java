@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import tacos.data.TacoRepository;
 import tacos.data.IngredientRepository;
 import tacos.data.OrderRepository;
+import tacos.data.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest
@@ -35,6 +36,9 @@ public class HomeControllerTest {
 
   @MockBean
   private OrderRepository orderRepository;
+
+  @MockBean
+  private UserRepository userRepository;
 
   @Test
   public void testHomePage() throws Exception {
